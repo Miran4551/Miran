@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://miran-backend-staging.onrender.com/api/v1';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://miran-backend.onrender.com/api/v1';
 
 // A browser-only sentinel used for the allocation console's empty-state action.
 // It is never sent to the backend: the request interceptor turns the action into

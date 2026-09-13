@@ -37,6 +37,7 @@ async function bootstrap() {
         .filter((o) => Boolean(o) && o !== '*')
     : [];
   const defaultAllowedOrigins = [
+    'https://miran33.netlify.app',
     'https://miraan.netlify.app',
     'https://miran-brh.pages.dev',
   ];

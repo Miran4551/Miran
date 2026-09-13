@@ -36,15 +36,13 @@ services:
       # CORS is managed by backend/src/main.ts with an explicit allowlist.
       # Do not use "*" because credentials are enabled.
       - key: CORS_ORIGIN
-        value: "https://miraan.netlify.app"
+        value: "https://miran33.netlify.app"
       # Base URL of the deployed web frontend. Used to build account-activation
       # and password-reset links (user-accounts.service.ts,
       # organization-provisioning.service.ts). Without it both fall back to
       # http://localhost:5173 and every link mailed from production is unusable.
-      # No default is set here on purpose — the real domain must be supplied in
-      # the Render dashboard before pilot users are onboarded.
       - key: FRONTEND_URL
-        sync: false
+        value: "https://miran33.netlify.app"
       - key: JWT_ACCESS_SECRET
         generateValue: true
       - key: JWT_REFRESH_SECRET
