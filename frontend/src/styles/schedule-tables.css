@@ -1,0 +1,263 @@
+:root {
+  --schedule-border: #e2e8f0;
+  --schedule-muted: #64748b;
+  --schedule-surface: #ffffff;
+  --schedule-header: #f8fafc;
+  --schedule-primary: #0f766e;
+}
+
+.miran-panel {
+  border: 1px solid var(--schedule-border) !important;
+  border-radius: 16px !important;
+  background: var(--schedule-surface) !important;
+  box-shadow: 0 5px 20px rgba(15, 23, 42, .06) !important;
+}
+
+.miran-calendar-scroll { width: 100%; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; scrollbar-gutter: stable; }
+.miran-calendar-scroll > div { min-width: 980px; }
+.miran-view-toggle { display: inline-flex; align-items: center; gap: 2px; padding: 3px; border: 1px solid var(--schedule-border); border-radius: 10px; background: #fff; }
+.miran-view-toggle .MuiButton-root { min-width: 74px; min-height: 34px; border-radius: 8px; font-weight: 800; }
+
+.miran-data-table { width: 100% !important; min-width: 780px !important; border-collapse: separate !important; border-spacing: 0 !important; table-layout: fixed !important; direction: rtl; background: #fff; }
+.miran-data-table th { background: var(--schedule-header) !important; color: #475569 !important; border-bottom: 1px solid var(--schedule-border) !important; font-size: 11.5px !important; font-weight: 900 !important; line-height: 1.35 !important; padding: 10px 9px !important; text-align: right !important; white-space: normal !important; vertical-align: middle !important; }
+.miran-data-table td { color: #0f172a !important; border-bottom: 1px solid #eef2f7 !important; font-size: 11.5px !important; font-weight: 600; line-height: 1.4 !important; padding: 10px 9px !important; text-align: right !important; vertical-align: middle !important; white-space: normal !important; word-break: break-word; }
+.miran-data-table tbody tr:hover td { background: #fbfdff; }
+.miran-data-table th:first-child, .miran-data-table td:first-child { width: 52px !important; text-align: center !important; }
+.miran-data-table th:nth-child(5), .miran-data-table td:nth-child(5) { width: 118px !important; }
+.miran-data-table th:nth-child(6), .miran-data-table td:nth-child(6) { width: 135px !important; white-space: nowrap !important; }
+
+.table-scroll,
+.table-responsive,
+.MuiTableContainer-root { width: 100%; max-width: 100%; overflow-x: auto !important; overflow-y: visible !important; -webkit-overflow-scrolling: touch; scrollbar-gutter: stable; direction: ltr !important; }
+.table-scroll .MuiTable-root,
+.table-responsive .MuiTable-root,
+.MuiTableContainer-root .MuiTable-root { direction: rtl !important; }
+
+.table-responsive .MuiTable-root, .table-scroll .MuiTable-root { width: max-content !important; min-width: 900px !important; border-collapse: separate !important; border-spacing: 0 !important; table-layout: auto !important; background: #fff; }
+.table-responsive .MuiTableHead-root .MuiTableRow-root, .table-scroll .MuiTableHead-root .MuiTableRow-root { background: #f7fafc !important; }
+.table-responsive .MuiTableHead-root .MuiTableCell-root, .table-scroll .MuiTableHead-root .MuiTableCell-root { height: auto !important; min-height: 46px !important; padding: 9px 11px !important; color: #334155 !important; font-size: 11px !important; font-weight: 900 !important; line-height: 1.3 !important; white-space: normal !important; word-break: normal !important; overflow-wrap: anywhere !important; text-align: right !important; vertical-align: middle !important; border-bottom: 1px solid #dfe8ec !important; }
+.table-responsive .MuiTableBody-root .MuiTableRow-root, .table-scroll .MuiTableBody-root .MuiTableRow-root { background: #fff !important; transition: background-color .15s ease, box-shadow .15s ease; }
+.table-responsive .MuiTableBody-root .MuiTableRow-root:nth-child(even), .table-scroll .MuiTableBody-root .MuiTableRow-root:nth-child(even) { background: #fbfdfe !important; }
+.table-responsive .MuiTableBody-root .MuiTableRow-root:hover, .table-scroll .MuiTableBody-root .MuiTableRow-root:hover { background: #f0fdfa !important; box-shadow: inset -3px 0 0 rgba(15, 118, 110, .18); }
+.table-responsive .MuiTableBody-root .MuiTableCell-root, .table-scroll .MuiTableBody-root .MuiTableCell-root { min-height: 60px !important; padding: 9px 11px !important; color: #1e293b !important; font-size: 11.5px !important; font-weight: 600 !important; line-height: 1.4 !important; white-space: normal !important; word-break: normal !important; overflow-wrap: anywhere !important; text-align: right !important; direction: rtl !important; vertical-align: middle !important; border-bottom: 1px solid #edf2f4 !important; }
+.table-responsive .MuiTableCell-root:first-child, .table-scroll .MuiTableCell-root:first-child { min-width: 180px !important; }
+.table-responsive .MuiTableCell-root .MuiTypography-root, .table-scroll .MuiTableCell-root .MuiTypography-root { line-height: 1.4 !important; }
+.table-responsive .MuiTableCell-root .MuiChip-root, .table-scroll .MuiTableCell-root .MuiChip-root { min-height: 28px !important; border-radius: 8px !important; font-weight: 800 !important; font-size: 11px !important; }
+.table-responsive .MuiTableCell-root .MuiButton-root, .table-scroll .MuiTableCell-root .MuiButton-root { min-height: 32px !important; min-width: auto !important; padding: 4px 9px !important; border-radius: 8px !important; font-size: 11px !important; font-weight: 800 !important; white-space: nowrap !important; }
+.table-responsive .MuiTableCell-root > .MuiBox-root, .table-scroll .MuiTableCell-root > .MuiBox-root { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+
+.MuiTableContainer-root:not(.table-responsive):not(.table-scroll) { width: 100% !important; max-width: 100% !important; overflow-x: auto !important; border-radius: 18px !important; border: 1px solid #e5edf0 !important; box-shadow: 0 6px 20px rgba(15, 23, 42, .05) !important; background: #fff !important; direction: ltr !important; }
+.MuiTableContainer-root:not(.table-responsive):not(.table-scroll) .MuiTable-root { min-width: 760px !important; width: max-content !important; max-width: none !important; table-layout: auto !important; direction: rtl !important; border-collapse: separate !important; border-spacing: 0 !important; }
+.MuiTableContainer-root:not(.table-responsive):not(.table-scroll) .MuiTableHead-root .MuiTableCell-root { height: auto !important; min-height: 46px !important; padding: 9px 11px !important; background: #f7fafc !important; color: #334155 !important; font-size: 11px !important; font-weight: 900 !important; line-height: 1.3 !important; text-align: right !important; white-space: normal !important; word-break: normal !important; overflow-wrap: anywhere !important; vertical-align: middle !important; border-bottom: 1px solid #dfe8ec !important; }
+.MuiTableContainer-root:not(.table-responsive):not(.table-scroll) .MuiTableBody-root .MuiTableRow-root { background: #fff !important; }
+.MuiTableContainer-root:not(.table-responsive):not(.table-scroll) .MuiTableBody-root .MuiTableRow-root:nth-child(even) { background: #fbfdfe !important; }
+.MuiTableContainer-root:not(.table-responsive):not(.table-scroll) .MuiTableBody-root .MuiTableRow-root:hover { background: #f0fdfa !important; }
+.MuiTableContainer-root:not(.table-responsive):not(.table-scroll) .MuiTableBody-root .MuiTableCell-root { min-height: 58px !important; padding: 9px 11px !important; color: #1e293b !important; font-size: 11.5px !important; font-weight: 600 !important; line-height: 1.4 !important; text-align: right !important; direction: rtl !important; vertical-align: middle !important; border-bottom: 1px solid #edf2f4 !important; white-space: normal !important; overflow-wrap: anywhere !important; }
+.MuiTableContainer-root:not(.table-responsive):not(.table-scroll) .MuiTableCell-root:first-child { min-width: 190px !important; font-weight: 800 !important; }
+
+.MuiTableContainer-root:not(.table-responsive):not(.table-scroll) .MuiTableHead-root .MuiTableCell-root:nth-child(1) { min-width: 190px !important; }
+.MuiTableContainer-root:not(.table-responsive):not(.table-scroll) .MuiTableHead-root .MuiTableCell-root:nth-child(2) { min-width: 120px !important; }
+.MuiTableContainer-root:not(.table-responsive):not(.table-scroll) .MuiTableHead-root .MuiTableCell-root:nth-child(3),
+.MuiTableContainer-root:not(.table-responsive):not(.table-scroll) .MuiTableHead-root .MuiTableCell-root:nth-child(4),
+.MuiTableContainer-root:not(.table-responsive):not(.table-scroll) .MuiTableHead-root .MuiTableCell-root:nth-child(5) { min-width: 105px !important; }
+.MuiTableContainer-root:not(.table-responsive):not(.table-scroll) .MuiTableHead-root .MuiTableCell-root:nth-child(6) { min-width: 90px !important; }
+
+.MuiDialog-root, .MuiDialog-container, .MuiDialog-paper, .MuiDialogTitle-root, .MuiDialogContent-root, .MuiDialogActions-root, .MuiDialog-paper > *, .MuiDialogContent-root > * { direction: rtl !important; text-align: right !important; }
+.MuiDialogTitle-root { padding: 18px 22px 14px !important; font-size: 1.05rem !important; font-weight: 900 !important; border-bottom: 1px solid #eef2f5; }
+.MuiDialogContent-root { padding: 18px 22px !important; }
+.MuiDialogActions-root { padding: 12px 22px 18px !important; gap: 8px; justify-content: flex-start !important; }
+.MuiDialog-paper { border-radius: 18px !important; max-height: calc(100dvh - 32px) !important; }
+.MuiDialog-paperWidthXs { max-width: 444px !important; }
+.MuiDialog-paperWidthSm { max-width: 600px !important; }
+.MuiDialog-paperWidthMd { max-width: 840px !important; }
+.MuiDialog-paperWidthLg { max-width: 1100px !important; }
+.MuiDialog-paper .MuiFormControl-root, .MuiDialog-paper .MuiTextField-root { direction: rtl !important; }
+.MuiDialog-paper .MuiInputLabel-root, .MuiDialog-paper .MuiFormLabel-root, .MuiDialog-paper .MuiTypography-root, .MuiDialog-paper label { direction: rtl !important; text-align: right !important; }
+.MuiDialog-paper .MuiInputBase-root, .MuiDialog-paper .MuiInputBase-input, .MuiDialog-paper .MuiSelect-select { direction: rtl !important; text-align: right !important; }
+.MuiDialog-paper input[type="date"] { direction: ltr !important; text-align: right !important; }
+.MuiDialog-paper input[type="number"] { direction: ltr !important; text-align: center !important; }
+.MuiDialog-paper .miran-date-range { direction: rtl !important; display: grid !important; grid-template-columns: 1fr 1fr !important; }
+.MuiDialog-paper .miran-date-range > * { order: initial !important; }
+.MuiDialog-paper .miran-date-range > *:first-child, .MuiDialog-paper .miran-date-range > *:last-child { order: 0 !important; }
+.MuiDialog-paper .MuiGrid-container { direction: rtl !important; }
+
+@media (min-width: 1024px) {
+  .table-responsive .MuiTable-root,
+  .table-scroll .MuiTable-root,
+  .MuiTableContainer-root:not(.table-responsive):not(.table-scroll) .MuiTable-root {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    table-layout: fixed !important;
+  }
+
+  .table-responsive .MuiTableCell-root,
+  .table-scroll .MuiTableCell-root,
+  .MuiTableContainer-root:not(.table-responsive):not(.table-scroll) .MuiTableCell-root {
+    min-width: 0 !important;
+    padding: 8px 9px !important;
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+  }
+
+  .table-responsive .MuiTableHead-root .MuiTableCell-root,
+  .table-scroll .MuiTableHead-root .MuiTableCell-root,
+  .MuiTableContainer-root:not(.table-responsive):not(.table-scroll) .MuiTableHead-root .MuiTableCell-root {
+    min-width: 0 !important;
+    padding: 8px 9px !important;
+    font-size: 10.5px !important;
+  }
+
+  .miran-department-capacity-table .MuiTableCell-root:nth-child(1) { width: 27% !important; }
+  .miran-department-capacity-table .MuiTableCell-root:nth-child(2),
+  .miran-department-capacity-table .MuiTableCell-root:nth-child(3),
+  .miran-department-capacity-table .MuiTableCell-root:nth-child(4) { width: 9% !important; text-align: center !important; }
+  .miran-department-capacity-table .MuiTableCell-root:nth-child(5) { width: 12% !important; text-align: center !important; }
+  .miran-department-capacity-table .MuiTableCell-root:nth-child(6) { width: 12% !important; text-align: center !important; }
+  .miran-department-capacity-table .MuiTableCell-root:nth-child(7) { width: 9% !important; text-align: center !important; }
+  .miran-department-capacity-table .MuiTableCell-root:nth-child(8) { width: 13% !important; text-align: center !important; }
+  .miran-department-capacity-table .MuiTableCell-root:first-child { font-weight: 800 !important; }
+  .miran-department-capacity-table .MuiTextField-root { max-width: 82px !important; }
+  .miran-department-capacity-table .MuiButton-root { min-width: 52px !important; padding: 4px 7px !important; }
+
+  .miran-period-capacity-table .MuiTableCell-root:nth-child(1) { width: 27% !important; }
+  .miran-period-capacity-table .MuiTableCell-root:nth-child(2) { width: 18% !important; }
+  .miran-period-capacity-table .MuiTableCell-root:nth-child(3),
+  .miran-period-capacity-table .MuiTableCell-root:nth-child(4),
+  .miran-period-capacity-table .MuiTableCell-root:nth-child(5) { width: 12% !important; text-align: center !important; }
+  .miran-period-capacity-table .MuiTableCell-root:nth-child(6) { width: 19% !important; text-align: center !important; }
+
+  .table-responsive .MuiTableCell-root:last-child,
+  .table-scroll .MuiTableCell-root:last-child { text-align: center !important; }
+  .table-responsive .MuiTableCell-root:last-child .MuiBox-root,
+  .table-scroll .MuiTableCell-root:last-child .MuiBox-root { justify-content: center !important; }
+  .table-responsive .MuiTableCell-root:last-child .MuiButton-root,
+  .table-scroll .MuiTableCell-root:last-child .MuiButton-root { padding-inline: 7px !important; }
+
+  /* Existing compact rules for operational tables. */
+  .table-responsive .MuiTable-root { table-layout: fixed !important; }
+  .table-responsive .MuiTableCell-root:nth-child(1) { width: 18% !important; }
+  .table-responsive .MuiTableCell-root:nth-child(2) { width: 14% !important; }
+  .table-responsive .MuiTableCell-root:nth-child(3) { width: 10% !important; }
+  .table-responsive .MuiTableCell-root:nth-child(4) { width: 13% !important; }
+  .table-responsive .MuiTableCell-root:nth-child(5) { width: 11% !important; }
+  .table-responsive .MuiTableCell-root:nth-child(6) { width: 9% !important; }
+  .table-responsive .MuiTableCell-root:nth-child(7) { width: 13% !important; }
+  .table-responsive .MuiTableCell-root:nth-child(8) { width: 12% !important; }
+  .table-responsive .MuiTableCell-root:nth-child(8) .MuiButton-root { padding-inline: 6px !important; }
+  .table-responsive .MuiTableCell-root:nth-child(8) .MuiBox-root { gap: 4px !important; }
+  .table-responsive .MuiStepper-root { min-width: 0 !important; width: 100% !important; }
+  .table-responsive .MuiStepLabel-label { font-size: 9px !important; line-height: 1.15 !important; white-space: normal !important; }
+  .table-responsive .MuiStepIcon-root { width: 20px !important; height: 20px !important; }
+
+  /* Hospital requests: use a deliberate wide canvas and keep both edge columns accessible. */
+  .table-responsive:has(.MuiStepper-root) {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    direction: ltr !important;
+    scrollbar-width: auto;
+    overscroll-behavior-inline: contain;
+  }
+  .table-responsive:has(.MuiStepper-root)::-webkit-scrollbar { height: 12px; }
+  .table-responsive:has(.MuiStepper-root)::-webkit-scrollbar-track { background: #eef2f4; border-radius: 10px; }
+  .table-responsive:has(.MuiStepper-root)::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 10px; border: 2px solid #eef2f4; }
+  .table-responsive:has(.MuiStepper-root) .MuiTable-root {
+    width: 1500px !important;
+    min-width: 1500px !important;
+    max-width: none !important;
+    table-layout: fixed !important;
+    direction: rtl !important;
+  }
+  .table-responsive:has(.MuiStepper-root) .MuiTableCell-root:nth-child(1) { width: 19% !important; min-width: 190px !important; }
+  .table-responsive:has(.MuiStepper-root) .MuiTableCell-root:nth-child(2) { width: 15% !important; min-width: 150px !important; }
+  .table-responsive:has(.MuiStepper-root) .MuiTableCell-root:nth-child(3) { width: 11% !important; min-width: 110px !important; }
+  .table-responsive:has(.MuiStepper-root) .MuiTableCell-root:nth-child(4) { width: 12% !important; min-width: 120px !important; }
+  .table-responsive:has(.MuiStepper-root) .MuiTableCell-root:nth-child(5) { width: 12% !important; min-width: 120px !important; }
+  .table-responsive:has(.MuiStepper-root) .MuiTableCell-root:nth-child(6) { width: 10% !important; min-width: 100px !important; }
+  .table-responsive:has(.MuiStepper-root) .MuiTableCell-root:nth-child(7) { width: 13% !important; min-width: 195px !important; }
+  .table-responsive:has(.MuiStepper-root) .MuiTableCell-root:nth-child(8) { width: 8% !important; min-width: 120px !important; }
+
+  /* Keep the two navigation-critical edges visible while the middle scrolls. */
+  .table-responsive:has(.MuiStepper-root) .MuiTableHead-root .MuiTableCell-root,
+  .table-responsive:has(.MuiStepper-root) .MuiTableBody-root .MuiTableCell-root { position: relative; }
+  .table-responsive:has(.MuiStepper-root) .MuiTableHead-root .MuiTableCell-root:first-child,
+  .table-responsive:has(.MuiStepper-root) .MuiTableBody-root .MuiTableCell-root:first-child {
+    position: sticky !important;
+    right: 0 !important;
+    z-index: 4 !important;
+    background: #fff !important;
+    box-shadow: -6px 0 12px rgba(15, 23, 42, .06);
+  }
+  .table-responsive:has(.MuiStepper-root) .MuiTableHead-root .MuiTableCell-root:first-child { background: #f7fafc !important; z-index: 6 !important; }
+  .table-responsive:has(.MuiStepper-root) .MuiTableHead-root .MuiTableCell-root:last-child,
+  .table-responsive:has(.MuiStepper-root) .MuiTableBody-root .MuiTableCell-root:last-child {
+    position: sticky !important;
+    left: 0 !important;
+    z-index: 4 !important;
+    background: #fff !important;
+    box-shadow: 6px 0 12px rgba(15, 23, 42, .06);
+  }
+  .table-responsive:has(.MuiStepper-root) .MuiTableHead-root .MuiTableCell-root:last-child { background: #f7fafc !important; z-index: 6 !important; }
+  .table-responsive:has(.MuiStepper-root) .MuiTableBody-root .MuiTableRow-root:nth-child(even) .MuiTableCell-root:first-child,
+  .table-responsive:has(.MuiStepper-root) .MuiTableBody-root .MuiTableRow-root:nth-child(even) .MuiTableCell-root:last-child { background: #fbfdfe !important; }
+  .table-responsive:has(.MuiStepper-root) .MuiTableBody-root .MuiTableRow-root:hover .MuiTableCell-root:first-child,
+  .table-responsive:has(.MuiStepper-root) .MuiTableBody-root .MuiTableRow-root:hover .MuiTableCell-root:last-child { background: #f0fdfa !important; }
+
+  /* The workflow is a compact visual timeline: completed steps stay as icons and
+     only the active step exposes its text, avoiding the previous vertical label crush. */
+  .table-responsive:has(.MuiStepper-root) .MuiStepper-root {
+    min-width: 175px !important;
+    width: 100% !important;
+    padding: 0 4px !important;
+  }
+  .table-responsive:has(.MuiStepper-root) .MuiStep-root { min-width: 32px !important; padding-inline: 2px !important; }
+  .table-responsive:has(.MuiStepper-root) .MuiStepLabel-label { display: none !important; }
+  .table-responsive:has(.MuiStepper-root) .MuiStepLabel-label.Mui-active {
+    display: block !important;
+    margin: 0 4px 0 0 !important;
+    max-width: 112px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+    font-weight: 900 !important;
+  }
+  .table-responsive:has(.MuiStepper-root) .MuiStepLabel-alternativeLabel {
+    flex-direction: row !important;
+    align-items: center !important;
+  }
+  .table-responsive:has(.MuiStepper-root) .MuiStepLabel-iconContainer { padding-inline: 0 !important; }
+  .table-responsive:has(.MuiStepper-root) .MuiStepIcon-root { width: 22px !important; height: 22px !important; flex: 0 0 auto !important; }
+  .table-responsive:has(.MuiStepper-root) .MuiStepConnector-root { flex: 1 1 auto !important; }
+  .table-responsive:has(.MuiStepper-root) .MuiStepConnector-line { min-height: 1px !important; }
+
+  .table-responsive:has(.MuiStepper-root) .MuiTableCell-root:nth-child(8) .MuiBox-root {
+    justify-content: center !important;
+    gap: 5px !important;
+    flex-wrap: nowrap !important;
+  }
+  .table-responsive:has(.MuiStepper-root) .MuiTableCell-root:nth-child(8) .MuiButton-root {
+    font-size: 10px !important;
+    min-height: 30px !important;
+    padding: 4px 7px !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .miran-data-table { min-width: 780px !important; }
+  .table-responsive .MuiTable-root, .table-scroll .MuiTable-root { min-width: 860px !important; }
+}
+
+@media (max-width: 600px) {
+  .miran-data-table { min-width: 720px !important; }
+  .miran-data-table th, .miran-data-table td { padding: 8px 7px !important; font-size: 10.5px !important; }
+  .table-responsive .MuiTable-root, .table-scroll .MuiTable-root, .MuiTableContainer-root:not(.table-responsive):not(.table-scroll) .MuiTable-root { min-width: 760px !important; }
+  .table-responsive .MuiTableHead-root .MuiTableCell-root, .table-scroll .MuiTableHead-root .MuiTableCell-root, .MuiTableContainer-root:not(.table-responsive):not(.table-scroll) .MuiTableHead-root .MuiTableCell-root { font-size: 10.5px !important; padding: 8px 8px !important; }
+  .MuiDialog-paper { width: calc(100% - 16px) !important; max-width: calc(100vw - 16px) !important; margin: 8px !important; }
+  .MuiDialogTitle-root { padding: 14px 16px 10px !important; }
+  .MuiDialogContent-root { padding: 12px 16px !important; }
+  .MuiDialogActions-root { padding: 10px 16px 14px !important; }
+
+  .table-responsive:has(.MuiStepper-root) .MuiTable-root { width: 1500px !important; min-width: 1500px !important; }
+}

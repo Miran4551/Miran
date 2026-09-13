@@ -1,0 +1,1 @@
+UPDATE training_events SET response_mode = 'accept_decline' WHERE response_mode = 'information_only' AND event_type IN ('urgent_call', 'training_course', 'lecture', 'training_session', 'meeting', 'task');

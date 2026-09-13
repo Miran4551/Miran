@@ -1,0 +1,92 @@
+/* Academic batches / intake tables */
+.MuiTableContainer-root.glass-card {
+  width: 100%;
+  overflow-x: auto !important;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable;
+}
+
+.MuiTableContainer-root.glass-card .MuiTable-root {
+  width: 100%;
+  min-width: 1060px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.MuiTableContainer-root.glass-card .MuiTableHead-root .MuiTableCell-root {
+  background: #F8FAFC;
+  color: #475569 !important;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.5;
+  white-space: nowrap;
+  padding: 11px 9px;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.MuiTableContainer-root.glass-card .MuiTableBody-root .MuiTableCell-root {
+  font-size: 12px;
+  line-height: 1.65;
+  padding: 12px 9px;
+  vertical-align: middle;
+  border-bottom: 1px solid #EEF2F7;
+}
+
+.MuiTableContainer-root.glass-card .MuiTableBody-root .MuiTableRow-root:last-child .MuiTableCell-root {
+  border-bottom: 0;
+}
+
+.MuiTableContainer-root.glass-card .MuiTableBody-root .MuiTableRow-root:hover {
+  background: #F8FAFC;
+}
+
+/* Keep identifiers readable without allowing long UUIDs to stretch the table. */
+.MuiTableContainer-root.glass-card .MuiChip-root {
+  max-width: 190px;
+}
+
+.MuiTableContainer-root.glass-card .MuiChip-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Dates, counters and statuses should stay compact and aligned. */
+.MuiTableContainer-root.glass-card .MuiTableCell-root:nth-child(5),
+.MuiTableContainer-root.glass-card .MuiTableCell-root:nth-child(6),
+.MuiTableContainer-root.glass-card .MuiTableCell-root:nth-child(7),
+.MuiTableContainer-root.glass-card .MuiTableCell-root:nth-child(8),
+.MuiTableContainer-root.glass-card .MuiTableCell-root:nth-child(9) {
+  white-space: nowrap;
+}
+
+.MuiTableContainer-root.glass-card .MuiTableCell-root:last-child {
+  min-width: 150px;
+}
+
+@media (min-width: 1200px) {
+  .MuiTableContainer-root.glass-card .MuiTable-root {
+    min-width: 0;
+  }
+
+  .MuiTableContainer-root.glass-card .MuiTableCell-root {
+    padding-inline: 8px;
+  }
+}
+
+@media (max-width: 900px) {
+  .MuiTableContainer-root.glass-card .MuiTable-root {
+    min-width: 1000px;
+  }
+
+  .MuiTableContainer-root.glass-card .MuiTableHead-root .MuiTableCell-root {
+    font-size: 11px;
+    padding: 9px 7px;
+  }
+
+  .MuiTableContainer-root.glass-card .MuiTableBody-root .MuiTableCell-root {
+    font-size: 11px;
+    padding: 10px 7px;
+  }
+}
