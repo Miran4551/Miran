@@ -36,6 +36,7 @@ export const RolesManagement: React.FC = () => {
   // Form states for editing
   const [editRoleName, setEditRoleName] = useState('');
   const [editPermissions, setEditPermissions] = useState<string[]>([]);
+  const [updateError, setUpdateError] = useState<string | null>(null);
 
   const { data: rolesData, refetch: refetchRoles, isLoading: isLoadingRoles, isError: isErrorRoles } = useQuery({
     queryKey: ['roles'],
@@ -72,6 +73,7 @@ export const RolesManagement: React.FC = () => {
 
   const handleUpdateRole = async () => {
     if (!editRole) return;
+    setUpdateError(null);
     try {
       await apiClient.patch(`/roles-permissions/roles/${editRole.id}`, {
         nameAr: editRoleName,
@@ -79,13 +81,14 @@ export const RolesManagement: React.FC = () => {
       });
       setEditRole(null);
       refetchRoles();
-    } catch (err) {
+    } catch (err: any) {
       console.error('Failed to update role', err);
+      setUpdateError(err.response?.data?.message || 'تعذر تحديث الدور والصلاحيات');
     }
   };
 
   const handleDeleteRole = async (roleId: string) => {
-    if (!window.confirm('هل أنت تأكد من رغبتك في حذف هذا الدور المخصص؟')) return;
+    if (!window.confirm('هل أنت متأكد من رغبتك في حذف هذا الدور المخصص؟')) return;
     try {
       await apiClient.delete(`/roles-permissions/roles/${roleId}`);
       refetchRoles();
@@ -96,6 +99,7 @@ export const RolesManagement: React.FC = () => {
 
   const openEditDialog = (role: any) => {
     setEditRole(role);
+    setUpdateError(null);
     setEditRoleName(role.nameAr || '');
     const currentPermCodes = (role.rolePermissions ?? [])
       .map((rp: any) => rp.permission?.code || rp.permissionId)
@@ -194,7 +198,12 @@ export const RolesManagement: React.FC = () => {
                     : `إنشاء: ${r.createdAt ? new Date(r.createdAt).toLocaleDateString('ar-SA') : 'تلقائي'}`
                 }
                 actions={[
-                  { label: 'تعديل الصلاحيات', icon: Edit, tone: 'warning', onClick: () => openEditDialog(r) },
+                  {
+                    label: r.isSystem ? 'عرض الصلاحيات' : 'تعديل الصلاحيات',
+                    icon: r.isSystem ? Shield : Edit,
+                    tone: r.isSystem ? 'info' : 'warning',
+                    onClick: () => openEditDialog(r),
+                  },
                   ...(!r.isSystem
                     ? [{ label: 'حذف الدور', icon: Trash2, tone: 'danger' as const, onClick: () => handleDeleteRole(r.id) }]
                     : []),
@@ -241,8 +250,18 @@ export const RolesManagement: React.FC = () => {
                       {r.createdAt ? new Date(r.createdAt).toLocaleDateString('ar-SA') : 'تلقائي'}
                     </TableCell>
                     <TableCell sx={{ whiteSpace: 'nowrap' }}>
-                      <Button size="small" variant="outlined" onClick={() => openEditDialog(r)} sx={{ borderColor: colour.warning, color: colour.warning, fontWeight: 700, mr: 1 }}>
-                        تعديل
+                      <Button
+                        size="small"
+                        variant="outlined"
+                        onClick={() => openEditDialog(r)}
+                        sx={{
+                          borderColor: r.isSystem ? colour.info : colour.warning,
+                          color: r.isSystem ? colour.info : colour.warning,
+                          fontWeight: 700,
+                          mr: 1,
+                        }}
+                      >
+                        {r.isSystem ? 'عرض الصلاحيات' : 'تعديل'}
                       </Button>
                       {!r.isSystem && (
                         <Button size="small" variant="outlined" onClick={() => handleDeleteRole(r.id)} sx={{ borderColor: colour.danger, color: colour.danger, fontWeight: 700 }}>
@@ -313,15 +332,30 @@ export const RolesManagement: React.FC = () => {
 
       {/* Edit Role Modal */}
       <Dialog open={Boolean(editRole)} onClose={() => setEditRole(null)} maxWidth="md" fullWidth>
-        <DialogTitle sx={{ fontWeight: 800, color: colour.text }}>
-          تعديل الدور والصلاحيات — {editRole?.nameAr ?? editRole?.code}
+        <DialogTitle sx={{ fontWeight: 800, color: colour.text, display: 'flex', alignItems: 'center', gap: 1 }}>
+          {editRole?.isSystem ? <Shield size={22} color={colour.info} /> : <Edit size={22} color={colour.warning} />}
+          {editRole?.isSystem ? 'عرض صلاحيات الدور — ' : 'تعديل الدور والصلاحيات — '}
+          {editRole?.nameAr ?? editRole?.code}
         </DialogTitle>
         <DialogContent dividers sx={{ display: 'flex', flexDirection: 'column', gap: space.md }}>
+          {editRole?.isSystem && (
+            <Alert severity="info" sx={{ fontWeight: 600 }}>
+              هذا الدور جزء من نموذج الصلاحيات الأساسي للنظام (System Role) ومحمي ضد التعديل لحماية أمان واستقرار المنصة. الصلاحيات الموضحة أدناه محددة نظامياً.
+            </Alert>
+          )}
+
+          {updateError && (
+            <Alert severity="error" sx={{ fontWeight: 600 }}>
+              {updateError}
+            </Alert>
+          )}
+
           <TextField
             label="اسم الدور بالعربية"
             variant="outlined"
             size="small"
             fullWidth
+            disabled={editRole?.isSystem}
             value={editRoleName}
             onChange={(e) => setEditRoleName(e.target.value)}
           />
@@ -338,6 +372,7 @@ export const RolesManagement: React.FC = () => {
                     <Checkbox
                       checked={editPermissions.includes(p.code)}
                       onChange={() => toggleEditPermission(p.code)}
+                      disabled={editRole?.isSystem}
                       sx={{ color: colour.primary }}
                     />
                   }
@@ -349,10 +384,18 @@ export const RolesManagement: React.FC = () => {
           </div>
         </DialogContent>
         <DialogActions sx={{ p: 2 }}>
-          <Button onClick={() => setEditRole(null)} sx={{ color: colour.muted }}>إلغاء</Button>
-          <Button onClick={handleUpdateRole} variant="contained" sx={{ background: colour.primary, fontWeight: 700, borderRadius: 2 }}>
-            تحديث الصلاحيات
-          </Button>
+          {editRole?.isSystem ? (
+            <Button onClick={() => setEditRole(null)} variant="contained" sx={{ background: colour.primary, fontWeight: 700, borderRadius: 2 }}>
+              إغلاق
+            </Button>
+          ) : (
+            <>
+              <Button onClick={() => setEditRole(null)} sx={{ color: colour.muted }}>إلغاء</Button>
+              <Button onClick={handleUpdateRole} variant="contained" sx={{ background: colour.primary, fontWeight: 700, borderRadius: 2 }}>
+                تحديث الصلاحيات
+              </Button>
+            </>
+          )}
         </DialogActions>
       </Dialog>
     </DataPageShell>
