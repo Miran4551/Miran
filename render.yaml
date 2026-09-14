@@ -3,7 +3,7 @@ services:
     name: miran-backend
     env: node
     rootDir: backend
-    buildCommand: npm install && npx prisma generate && npm run build && npm run verify:build
+    buildCommand: npm install --include=dev && npx prisma generate && npm run build && npm run verify:build
     # Applies committed migrations only — no schema drift from `db push`, and no
     # automatic seed. `src/seed/seed.ts` upserts a full legacy demo dataset by
     # fixed codes (HEALTH-HOLDING, NB-CLUSTER, etc.); running it on every boot
